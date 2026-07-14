@@ -1,0 +1,6 @@
+Paracetamol,35
+Amoxicillin,15
+Ibuprofen,12
+Vitamin C,8
+Syringe,100
+Surgical Mask,25
