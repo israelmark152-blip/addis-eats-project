@@ -1,0 +1,6 @@
+Customer Transaction Summary Report
+====================================
+Chala: 450.00
+Mulu: 420.00
+Abebe: 200.75
+Aster: 95.10

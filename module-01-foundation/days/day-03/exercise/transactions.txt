@@ -1,0 +1,6 @@
+Abebe,150.50
+Mulu,300.00
+Abebe,50.25
+Chala,450.00
+Mulu,120.00
+Aster,95.10
