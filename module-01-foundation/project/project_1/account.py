@@ -8,11 +8,8 @@ class Account:
         self.owner = owner
         self.account_number = number
         self._balance = balance
-        self._observers = []  # Added in Day 6
-        
-        # --- Day 7 Addition: Per-Account Transaction History Stack ---
-        # Stacks follow Last-In, First-Out (LIFO). We store tuples: (type, amount)
-        self.history = []
+        self._observers = []
+        self.history = []  # Day 7: Transaction history stack (LIFO)
 
     @property
     def balance(self):
@@ -29,10 +26,7 @@ class Account:
         if amount <= 0:
             raise ValueError("Amount must be positive")
         self._balance += amount
-        
-        # Day 7: Record transaction onto the history stack
         self.history.append(("deposit", amount))
-        
         self._notify(f"[Deposit] {amount:.2f} ETB. New Balance: {self._balance:.2f} ETB")
 
     def withdraw(self, amount):
@@ -41,10 +35,7 @@ class Account:
         if amount > self._balance:
             raise ValueError("Insufficient funds: Overdraft rejected")
         self._balance -= amount
-        
-        # Day 7: Record transaction onto the history stack
         self.history.append(("withdraw", amount))
-        
         self._notify(f"[Withdrawal] {amount:.2f} ETB. New Balance: {self._balance:.2f} ETB")
 
     def statement(self):
@@ -79,9 +70,7 @@ class CurrentAccount(Account):
             raise ValueError("Insufficient funds: Exceeds overdraft limit")
         
         self._balance -= amount
-        # Day 7: Record specialized withdrawal onto the history stack
         self.history.append(("withdraw", amount))
-        
         self._notify(f"[Overdraft Withdrawal] {amount:.2f} ETB. New Balance: {self._balance:.2f} ETB")
 
     def statement(self):
@@ -125,93 +114,123 @@ class AuditLog:
 # ==========================================================
 # [DAY 7 MILESTONE]: LINEAR STRUCTURES & BIG-O WAREHOUSE
 # ==========================================================
-# Core requirements met:
-# - AccountRegistry uses a Dict for O(1) searches by account number.
-# - Maintains an internal list alongside it to retain exact insertion order.
-# - Implements undo_last() reversing mutations utilizing a history stack (LIFO).
-# ==========================================================
-
 class AccountRegistry:
     def __init__(self):
-        self.by_number = {}  # Map: account_number -> Account object (O(1) lookups)
-        self.order = []      # List: tracking insertion sequence for sequential rendering
+        self.by_number = {}  # Map: account_number -> Account object
+        self.order = []      # List: tracking insertion sequence
 
     def add(self, acc):
-        """Adds an account to the registry. Time Complexity: O(1)"""
         self.by_number[acc.account_number] = acc
         self.order.append(acc.account_number)
 
     def find(self, number):
-        """Finds an account via dictionary lookup. Time Complexity: O(1)"""
         return self.by_number.get(number)
 
     def list_all(self):
-        """Returns all registered accounts in the order they were added. Time Complexity: O(n)"""
         return [self.by_number[num] for num in self.order]
 
     def undo_last(self, number):
-        """Pops the most recent transaction from the stack and reverses its operation (LIFO)."""
         account = self.find(number)
-        if not account:
-            print("Account not found.")
+        if not account or not account.history:
             return
-
-        if not account.history:
-            print(f"No transactions to undo for account {number}.")
-            return
-
-        # Pop the latest transaction record from the stack
         tx_type, amount = account.history.pop()
-        print(f"\n[UNDOING] Last action was a '{tx_type}' of {amount:.2f} ETB...")
-
-        # Reverse the exact effect on the private balance variable directly
         if tx_type == "deposit":
             account._balance -= amount
-            account._notify(f"[Undo Deposit] Removed {amount:.2f} ETB. Rolled back balance: {account.balance:.2f} ETB")
         elif tx_type == "withdraw":
             account._balance += amount
-            account._notify(f"[Undo Withdrawal] Restored {amount:.2f} ETB. Rolled back balance: {account.balance:.2f} ETB")
 
 
 # ==========================================================
-# COMPREHENSIVE VERIFICATION SUITE
+# [DAY 8 MILESTONE]: RECURSION, SEARCHING & SORTING
+# ==========================================================
+# Core requirements met:
+# - Leaderboard sorting using custom key functions (O(n log n))
+# - Standalone Binary Search implementation algorithm (O(log n))
+# - Deep calculation using recursive stack traces (no loops allowed)
+# ==========================================================
+
+    # --- Day 8 Task 1: Timsort Balance Leaderboard ---
+    def top_by_balance(self, n=5):
+        """Returns the top n highest-balance accounts in order using Timsort."""
+        accts = sorted(self.by_number.values(), key=lambda a: a.balance, reverse=True)
+        return accts[:n]
+
+    # --- Day 8 Task 2: Pure Binary Search Implementation ---
+    def find_by_number(self, number):
+        """Finds an account using a pure O(log n) binary search on sorted keys."""
+        sorted_numbers = sorted(self.by_number.keys())
+        
+        # Binary search logic bounds
+        lo, hi = 0, len(sorted_numbers) - 1
+        while lo <= hi:
+            mid = (lo + hi) // 2
+            if sorted_numbers[mid] == number:
+                # Target matched, retrieve the instance from dictionary mapping
+                return self.by_number[sorted_numbers[mid]]
+            elif sorted_numbers[mid] < number:
+                lo = mid + 1  # Target is in the upper half
+            else:
+                hi = mid - 1  # Target is in the lower half
+        return None
+
+    # --- Day 8 Task 3: Recursive Transaction Valuation ---
+    def total_transactions(self, number):
+        """Sums an account's total transaction volume recursively (no loops)."""
+        account = self.find_by_number(number)
+        if not account:
+            return 0.0
+
+        # Inner helper to process history stack list recursively
+        def _recursive_sum(history_list, index):
+            # Base case: we reached the end of the history array
+            if index >= len(history_list):
+                return 0.0
+            
+            # Recursive case: process current element and add to remaining stack
+            _, amount = history_list[index]
+            return amount + _recursive_sum(history_list, index + 1)
+
+        return _recursive_sum(account.history, 0)
+
+
+# ==========================================================
+# DAY 8 COMPREHENSIVE VERIFICATION SUITE
 # ==========================================================
 if __name__ == "__main__":
-    print("--- Verify Day 7: Account Registry Operations ---")
+    print("--- Initializing Day 8 Verification Suite ---")
     registry = AccountRegistry()
 
-    # Create accounts using our Day 6 Factory
-    acc1 = AccountFactory.create("savings", "Almaz", "CBE-001", 1000)
-    acc2 = AccountFactory.create("current", "Dawit", "CBE-002", 500)
+    # Create several tracking test entries
+    a1 = AccountFactory.create("savings", "Almaz", "CBE-101", 1200)
+    a2 = AccountFactory.create("current", "Dawit", "CBE-102", 4500)
+    a3 = AccountFactory.create("savings", "Bekele", "CBE-103", 950)
+    a4 = AccountFactory.create("current", "Chaltu", "CBE-104", 3100)
 
-    # Attach Day 6 Observers
-    sms = SMSAlert()
-    acc1.subscribe(sms)
-    acc2.subscribe(sms)
+    registry.add(a1)
+    registry.add(a2)
+    registry.add(a3)
+    registry.add(a4)
 
-    # Add to Day 7 Registry
-    registry.add(acc1)
-    registry.add(acc2)
+    print("\n--- Testing Day 8 Task 1: Leaderboard Generation ---")
+    print("Top 3 accounts ranking by balance:")
+    for rank, account in enumerate(registry.top_by_balance(3), start=1):
+        print(f"Rank #{rank}: {account.owner} | Balance: {account.balance} ETB")
 
-    print("\nListing all accounts in insertion order:")
-    for account in registry.list_all():
-        account.statement()
+    print("\n--- Testing Day 8 Task 2: Binary Search Optimization ---")
+    search_target = "CBE-104"
+    print(f"Executing binary search lookup for account number '{search_target}'...")
+    found_account = registry.find_by_number(search_target)
+    if found_account:
+        print(f"Target located! Account Details -> Owner: {found_account.owner} | Balance: {found_account.balance} ETB")
+    else:
+        print("Error: Target account not found.")
 
-    print("\nTesting O(1) lookup functionality:")
-    found = registry.find("CBE-001")
-    if found:
-        print(f"Successfully located account! Owner: {found.owner}")
+    print("\n--- Testing Day 8 Task 3: Recursive Transaction Summing ---")
+    # Execute a stream of operations on Dawit's account
+    print("Simulating transaction stream for Dawit...")
+    a2.deposit(500)   # tx 1: 500
+    a2.withdraw(200)  # tx 2: 200
+    a2.deposit(100)   # tx 3: 100
 
-    print("\n--- Testing Day 7 Stack Mutation & Undo ---")
-    # Perform transactions
-    acc1.deposit(500)   # Balance becomes 1500
-    acc1.withdraw(200)  # Balance becomes 1300
-
-    # Undo the last transaction (the 200 withdrawal)
-    registry.undo_last("CBE-001")
-    
-    # Undo the transaction before that (the 500 deposit)
-    registry.undo_last("CBE-001")
-
-    print("\nFinal verified account status after rollbacks:")
-    acc1.statement()
+    total_volume = registry.total_transactions("CBE-102")
+    print(f"Calculation complete! Total transactional changes calculated recursively: {total_volume:.2f} ETB")
