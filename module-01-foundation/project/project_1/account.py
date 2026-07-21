@@ -1,4 +1,5 @@
 from collections import deque
+import heapq
 
 # ==========================================================
 # [DAY 4 MILESTONE]: BASE ACCOUNT CLASS & ENCAPSULATION
@@ -101,36 +102,23 @@ class AccountFactory:
         raise ValueError(f"Unknown type: {kind}")
 
 
-class SMSAlert:
-    def update(self, event):
-        print(f"[TeleBirr SMS Notification] Alert: {event}")
-
-
-class AuditLog:
-    def update(self, event):
-        print(f"[System Security Audit Log] Event: {event}")
-
-
 # ==========================================================
-# [DAY 7 MILESTONE]: LINEAR STRUCTURES & BIG-O WAREHOUSE
+# [DAY 7 MILESTONE]: ACCOUNT REGISTRY & LINEAR STRUCTURES
 # ==========================================================
 class AccountRegistry:
     def __init__(self):
-        self.by_number = {}  # Map: account_number -> Account object
-        self.order = []      # List: tracking insertion sequence
+        self.by_number = {}
+        self.order = []
 
     def add(self, acc):
         self.by_number[acc.account_number] = acc
         self.order.append(acc.account_number)
 
-    def find(self, number):
-        return self.by_number.get(number)
-
     def list_all(self):
         return [self.by_number[num] for num in self.order]
 
     def undo_last(self, number):
-        account = self.find(number)
+        account = self.by_number.get(number)
         if not account or not account.history:
             return
         tx_type, amount = account.history.pop()
@@ -139,54 +127,33 @@ class AccountRegistry:
         elif tx_type == "withdraw":
             account._balance += amount
 
-
 # ==========================================================
-# [DAY 8 MILESTONE]: RECURSION, SEARCHING & SORTING
+# [DAY 8 MILESTONE]: SEARCHING, SORTING & RECURSION
 # ==========================================================
-# Core requirements met:
-# - Leaderboard sorting using custom key functions (O(n log n))
-# - Standalone Binary Search implementation algorithm (O(log n))
-# - Deep calculation using recursive stack traces (no loops allowed)
-# ==========================================================
-
-    # --- Day 8 Task 1: Timsort Balance Leaderboard ---
     def top_by_balance(self, n=5):
-        """Returns the top n highest-balance accounts in order using Timsort."""
-        accts = sorted(self.by_number.values(), key=lambda a: a.balance, reverse=True)
-        return accts[:n]
+        return sorted(self.by_number.values(), key=lambda a: a.balance, reverse=True)[:n]
 
-    # --- Day 8 Task 2: Pure Binary Search Implementation ---
     def find_by_number(self, number):
-        """Finds an account using a pure O(log n) binary search on sorted keys."""
         sorted_numbers = sorted(self.by_number.keys())
-        
-        # Binary search logic bounds
         lo, hi = 0, len(sorted_numbers) - 1
         while lo <= hi:
             mid = (lo + hi) // 2
             if sorted_numbers[mid] == number:
-                # Target matched, retrieve the instance from dictionary mapping
                 return self.by_number[sorted_numbers[mid]]
             elif sorted_numbers[mid] < number:
-                lo = mid + 1  # Target is in the upper half
+                lo = mid + 1
             else:
-                hi = mid - 1  # Target is in the lower half
+                hi = mid - 1
         return None
 
-    # --- Day 8 Task 3: Recursive Transaction Valuation ---
     def total_transactions(self, number):
-        """Sums an account's total transaction volume recursively (no loops)."""
         account = self.find_by_number(number)
         if not account:
             return 0.0
 
-        # Inner helper to process history stack list recursively
         def _recursive_sum(history_list, index):
-            # Base case: we reached the end of the history array
             if index >= len(history_list):
                 return 0.0
-            
-            # Recursive case: process current element and add to remaining stack
             _, amount = history_list[index]
             return amount + _recursive_sum(history_list, index + 1)
 
@@ -194,43 +161,74 @@ class AccountRegistry:
 
 
 # ==========================================================
-# DAY 8 COMPREHENSIVE VERIFICATION SUITE
+# [DAY 9 MILESTONE]: TREES & GRAPHS MODELING
+# ==========================================================
+class Branch:
+    """Models organizational structure as a hierarchical tree."""
+    def __init__(self, name):
+        self.name = name
+        self.children = []  # Sub-branches (children nodes)
+        self.accounts = []  # Accounts belonging to this branch
+
+    def add_child(self, branch_node):
+        self.children.append(branch_node)
+
+    def add_account(self, account):
+        self.accounts.append(account)
+
+    def total_balance(self):
+        """Recursively sums the balances of this branch and all sub-branches."""
+        total = sum(a.balance for a in self.accounts)
+        for child in self.children:
+            total += child.total_balance()
+        return total
+
+
+def bfs_reachable_transfers(transfers_graph, start_account):
+    """Breadth-First Search (BFS) to trace all accounts reachable via transfer network."""
+    seen = {start_account}
+    queue = deque([start_account])
+    
+    while queue:
+        current = queue.popleft()
+        for neighbor in transfers_graph.get(current, []):
+            if neighbor not in seen:
+                seen.add(neighbor)
+                queue.append(neighbor)
+    return seen
+
+
+# ==========================================================
+# DAY 9 VERIFICATION SUITE
 # ==========================================================
 if __name__ == "__main__":
-    print("--- Initializing Day 8 Verification Suite ---")
-    registry = AccountRegistry()
+    print("--- Testing Day 9: Branch Hierarchy Tree ---")
+    head_office = Branch("Head Office - Addis Ababa")
+    regional_north = Branch("Northern Region")
+    sub_branch_mekelle = Branch("Mekelle Main")
+    
+    # Establish 3-level tree hierarchy
+    head_office.add_child(regional_north)
+    regional_north.add_child(sub_branch_mekelle)
 
-    # Create several tracking test entries
+    # Attach accounts
     a1 = AccountFactory.create("savings", "Almaz", "CBE-101", 1200)
     a2 = AccountFactory.create("current", "Dawit", "CBE-102", 4500)
     a3 = AccountFactory.create("savings", "Bekele", "CBE-103", 950)
-    a4 = AccountFactory.create("current", "Chaltu", "CBE-104", 3100)
 
-    registry.add(a1)
-    registry.add(a2)
-    registry.add(a3)
-    registry.add(a4)
+    head_office.add_account(a1)
+    regional_north.add_account(a2)
+    sub_branch_mekelle.add_account(a3)
 
-    print("\n--- Testing Day 8 Task 1: Leaderboard Generation ---")
-    print("Top 3 accounts ranking by balance:")
-    for rank, account in enumerate(registry.top_by_balance(3), start=1):
-        print(f"Rank #{rank}: {account.owner} | Balance: {account.balance} ETB")
+    print(f"Total Bank System Reserve Balance (Recursive Tree Sum): {head_office.total_balance():.2f} ETB")
 
-    print("\n--- Testing Day 8 Task 2: Binary Search Optimization ---")
-    search_target = "CBE-104"
-    print(f"Executing binary search lookup for account number '{search_target}'...")
-    found_account = registry.find_by_number(search_target)
-    if found_account:
-        print(f"Target located! Account Details -> Owner: {found_account.owner} | Balance: {found_account.balance} ETB")
-    else:
-        print("Error: Target account not found.")
+    print("\n--- Testing Day 9: Transfer Network Graph (BFS) ---")
+    transfers = {
+        "CBE-101": ["CBE-102", "CBE-103"],
+        "CBE-102": ["CBE-104"],
+        "CBE-103": ["CBE-102"],
+        "CBE-104": []
+    }
 
-    print("\n--- Testing Day 8 Task 3: Recursive Transaction Summing ---")
-    # Execute a stream of operations on Dawit's account
-    print("Simulating transaction stream for Dawit...")
-    a2.deposit(500)   # tx 1: 500
-    a2.withdraw(200)  # tx 2: 200
-    a2.deposit(100)   # tx 3: 100
-
-    total_volume = registry.total_transactions("CBE-102")
-    print(f"Calculation complete! Total transactional changes calculated recursively: {total_volume:.2f} ETB")
+    reachable = bfs_reachable_transfers(transfers, "CBE-101")
+    print(f"Accounts reachable from CBE-101 via transfer paths: {reachable}")
