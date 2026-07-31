@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Habesha Eatery | Traditional Ethiopian Restaurant in Bole</title>
+  <meta name="description" content="Reserve a table at Habesha Eatery in Bole, Addis Ababa. Explore our menu featuring Doro Wat, Shiro, and Tibs[cite: 3].">
+</head>
+<body>
+
+  <!-- Continued Navigation structure from Day 11 -->
+  <header>
+    <h1>Habesha Eatery</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home & Menu</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Day 12 Feature: Table Reservation Form -->
+    <section>
+      <h2>Table Reservation</h2>
+      <form action="/reserve" method="post">
+        <fieldset>
+          <legend>Booking Form</legend>
+          
+          <div>
+            <label for="res-name">Full Name</label>
+            <input id="res-name" name="fullname" type="text" required>
+          </div>
+
+          <div>
+            <label for="res-email">Email Address</label>
+            <input id="res-email" name="email" type="email" required>
+          </div>
+
+          <div>
+            <label for="res-tel">Phone Number</label>
+            <input 
+              id="res-tel" 
+              name="phone" 
+              type="tel" 
+              pattern="\+251[0-9]{9}" 
+              required 
+              aria-describedby="res-tel-help"
+              placeholder="+251911234567"
+            >
+            <small id="res-tel-help">Format: +251 followed by 9 digits[cite: 3].</small>
+          </div>
+
+          <div>
+            <label for="res-date">Reservation Date</label>
+            <input id="res-date" name="res_date" type="date" required>
+          </div>
+
+          <div>
+            <label for="res-size">Party Size</label>
+            <input id="res-size" name="party_size" type="number" min="1" max="12" required>
+          </div>
+
+          <div>
+            <label for="res-notes">Special Requests</label>
+            <textarea id="res-notes" name="notes" rows="3"></textarea>
+          </div>
+
+          <button type="submit">Confirm Reservation</button>
+        </fieldset>
+      </form>
+    </section>
+
+    <!-- Day 12 Feature: Accessible Menu Table -->
+    <section>
+      <h2>Menu & Pricing</h2>
+      <table>
+        <caption>Habesha Eatery Traditional Dishes</caption>
+        <thead>
+          <tr>
+            <th scope="col">Dish</th>
+            <th scope="col">Price (ETB)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Doro Wat</th>
+            <td>320</td>
+          </tr>
+          <tr>
+            <th scope="row">Shiro</th>
+            <td>180</td>
+          </tr>
+          <tr>
+            <th scope="row">Tibs</th>
+            <td>360</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Day 12 Feature: Media Block with Alt & Embedded Maps -->
+    <section>
+      <h2>Our Location & Ambiance</h2>
+      <figure>
+        <img 
+          src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600" 
+          alt="Traditional Ethiopian food served on injera" 
+          width="600" 
+          height="380" 
+          loading="lazy"
+        >
+        <figcaption>Authentic Ethiopian cuisine served fresh daily[cite: 3].</figcaption>
+      </figure>
+
+      <iframe 
+        src="https://maps.google.com/maps?q=Bole,Addis+Ababa&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+        title="Map showing Habesha Eatery in Bole, Addis Ababa" 
+        width="100%" 
+        height="300" 
+        loading="lazy"
+      ></iframe>
+    </section>
+  </main>
+
+  <footer>
+    <p>Bole, Addis Ababa · Phone: +251 911 234 567[cite: 3]</p>
+  </footer>
+
+</body>
+</html>

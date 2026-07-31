@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 12 - In-Class Exercises</title>
+</head>
+<body>
+
+  <header>
+    <h1>Day 12 In-Class Practice</h1>
+  </header>
+
+  <main>
+
+    <!-- IN-CLASS PRACTICE 1: Basic Accessible Form -->
+    <section>
+      <h2>In-Class Practice 1: User Sign-Up Form</h2>
+      <form action="/signup" method="post">
+        <fieldset>
+          <legend>Account Information</legend>
+          
+          <div>
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" required>
+          </div>
+
+          <div>
+            <label for="user-email">Email Address</label>
+            <input id="user-email" name="email" type="email" required>
+          </div>
+
+          <div>
+            <label for="user-role">Role</label>
+            <select id="user-role" name="role" required>
+              <option value="">-- Choose a Role --</option>
+              <option value="student">Student</option>
+              <option value="instructor">Instructor</option>
+            </select>
+          </div>
+
+          <button type="submit">Submit Form</button>
+        </fieldset>
+      </form>
+    </section>
+
+    <hr>
+
+    <!-- IN-CLASS PRACTICE 2: Accessible Table -->
+    <section>
+      <h2>In-Class Practice 2: Simple Data Table</h2>
+      <table>
+        <caption>Weekly Class Attendance</caption>
+        <thead>
+          <tr>
+            <th scope="col">Day</th>
+            <th scope="col">Topic</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Day 11</th>
+            <td>HTML Basics & Semantics</td>
+            <td>Completed</td>
+          </tr>
+          <tr>
+            <th scope="row">Day 12</th>
+            <td>Forms, Tables & Accessibility</td>
+            <td>In Progress</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+</body>
+</html>

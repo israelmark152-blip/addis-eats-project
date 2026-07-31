@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 12 Homework Exercises</title>
+  <meta name="description" content="Day 12 HTML forms, tables, media, and accessibility exercises.">
+</head>
+<body>
+
+  <header>
+    <h1>Day 12 Exercises</h1>
+  </header>
+
+  <main>
+
+    <!-- EXERCISE 1: Ethio Telecom Registration Form -->
+    <section>
+      <h2>1. Ethio Telecom Registration Form</h2>
+      <!-- 
+        Method Choice Justification: 
+        We use method="POST" because user details send sensitive data to create a new user account. 
+        Using GET would expose phone numbers and emails directly inside the browser URL query string.
+      -->
+      <form action="/register" method="post">
+        <fieldset>
+          <legend>Ethio Telecom Registration</legend>
+
+          <div>
+            <label for="fullname">Full Name</label>
+            <input id="fullname" name="fullname" type="text" required>
+          </div>
+
+          <div>
+            <label for="email">Email Address</label>
+            <input id="email" name="email" type="email" required placeholder="name@domain.et">
+          </div>
+
+          <div>
+            <label for="tel">Phone Number</label>
+            <input 
+              id="tel" 
+              name="tel" 
+              type="tel" 
+              pattern="\+251[0-9]{9}" 
+              required 
+              aria-describedby="phone-help"
+              placeholder="+251911234567"
+            >
+            <small id="phone-help">Format: +251 followed by 9 digits.</small>
+          </div>
+
+          <div>
+            <label for="branch">Preferred Branch</label>
+            <select id="branch" name="branch" required>
+              <option value="">-- Select a Branch --</option>
+              <option value="bole">Bole</option>
+              <option value="kazanchis">Kazanchis</option>
+              <option value="piassa">Piassa</option>
+            </select>
+          </div>
+
+          <button type="submit">Register Service</button>
+        </fieldset>
+      </form>
+    </section>
+
+    <hr>
+
+    <!-- EXERCISE 2: Ethiopian Airlines Flight Schedule Table -->
+    <section>
+      <h2>2. Ethiopian Airlines Domestic Flight Schedule</h2>
+      <table>
+        <caption>Ethiopian Airlines Flight Timetable</caption>
+        <thead>
+          <tr>
+            <th scope="col">Flight</th>
+            <th scope="col">From</th>
+            <th scope="col">To</th>
+            <th scope="col">Departs</th>
+            <th scope="col">Price (ETB)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">ET-118</th>
+            <td>Addis Ababa</td>
+            <td>Bahir Dar</td>
+            <td>06:40</td>
+            <td>3,500</td>
+          </tr>
+          <tr>
+            <th scope="row">ET-126</th>
+            <td>Addis Ababa</td>
+            <td>Gondar</td>
+            <td>07:15</td>
+            <td>4,100</td>
+          </tr>
+          <tr>
+            <th scope="row">ET-130</th>
+            <td>Addis Ababa</td>
+            <td>Mekelle</td>
+            <td>09:00</td>
+            <td>4,500</td>
+          </tr>
+          <tr>
+            <th scope="row">ET-142</th>
+            <td>Addis Ababa</td>
+            <td>Dire Dawa</td>
+            <td>11:30</td>
+            <td>3,800</td>
+          </tr>
+          <tr>
+            <th scope="row">ET-160</th>
+            <td>Addis Ababa</td>
+            <td>Lalibela</td>
+            <td>13:45</td>
+            <td>4,200</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr>
+
+    <!-- EXERCISE 3: Accessible Media Block -->
+    <section>
+      <h2>3. Media Block (Image & Map)</h2>
+      <figure>
+        <img 
+          src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600" 
+          alt="Rock-hewn church of Bete Giyorgis in Lalibela carved out of red volcanic rock" 
+          width="600" 
+          height="400" 
+          loading="lazy"
+        >
+        <figcaption>Bete Giyorgis, one of the famous rock-hewn churches of Lalibela.</figcaption>
+      </figure>
+
+      <iframe 
+        src="https://maps.google.com/maps?q=Bole,Addis+Ababa&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+        title="Map showing location in Bole, Addis Ababa" 
+        width="100%" 
+        height="300" 
+        loading="lazy"
+      ></iframe>
+    </section>
+
+    <hr>
+
+    <!-- EXERCISE 4: Accessibility Refactor Fixes -->
+    <section>
+      <h2>4. Accessible Refactored Code</h2>
+      <!-- 
+        FIX 1: Converted <div> to native <button> so it's reachable via Keyboard (Tab, Enter, Space).
+        FIX 2: Added explicit <label> connected to <input> via for/id for screen readers.
+        FIX 3: Added meaningful alt text to <img> for screen readers.
+      -->
+      <button type="submit">Submit</button>
+
+      <div>
+        <label for="refactored-email">Email Address</label>
+        <input id="refactored-email" name="email" type="email" placeholder="Enter email">
+      </div>
+
+      <img src="logo.png" alt="Ethio Telecom Logo" width="150" height="50">
+    </section>
+
+  </main>
+
+</body>
+</html>
