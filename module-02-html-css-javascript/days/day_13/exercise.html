@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 13 - Homework Exercises</title>
+  <link rel="stylesheet" href="exercise.css">
+</head>
+<body>
+
+  <header>
+    <h1>Day 13 CSS Foundations Exercises</h1>
+  </header>
+
+  <main>
+
+    <!-- EXERCISE 1: Custom Properties & Styled Button -->
+    <section>
+      <h2>1. CSS Variables & Styled Button</h2>
+      <button class="custom-btn" type="button">Click Me</button>
+    </section>
+
+    <hr>
+
+    <!-- EXERCISE 2: Box Model Comparison -->
+    <section>
+      <h2>2. Box Model: Content-Box vs. Border-Box</h2>
+      <div class="box content-box-demo">
+        <p><strong>Content-Box:</strong> Specified width 300px + 48px padding + 4px border = <strong>352px wide on screen</strong>.</p>
+      </div>
+      <br>
+      <div class="box border-box-demo">
+        <p><strong>Border-Box:</strong> Specified width 300px includes padding & border = <strong>300px exact width</strong>.</p>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- EXERCISE 3: Specificity Explanation -->
+    <section>
+      <h2>3. Specificity Explanation</h2>
+      <p id="lead" class="note">This paragraph demonstrates selector specificity[cite: 6].</p>
+      <article class="explanation">
+        <h3>Specificity Scores:</h3>
+        <ul>
+          <li><code>p</code> (Element selector) = <strong>(0, 0, 0, 1)</strong>[cite: 6]</li>
+          <li><code>.note</code> (Class selector) = <strong>(0, 0, 1, 0)</strong>[cite: 6]</li>
+          <li><code>#lead</code> (ID selector) = <strong>(0, 1, 0, 0)</strong>[cite: 6]</li>
+        </ul>
+        <p><strong>Winner:</strong> <code>#lead</code> wins and renders <strong>green</strong> because the ID column has the highest score[cite: 6].</p>
+      </article>
+    </section>
+
+    <hr>
+
+    <!-- EXERCISE 4: Ethiopian Airlines Table -->
+    <section>
+      <h2>4. Ethiopian Airlines Flight Schedule Table</h2>
+      <table class="flight-table">
+        <caption>Ethiopian Airlines Domestic Flight Timetable</caption>
+        <thead>
+          <tr>
+            <th scope="col">Flight No.</th>
+            <th scope="col">Origin</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Departure</th>
+            <th scope="col">Price (ETB)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">ET-118</th>
+            <td>Addis Ababa</td>
+            <td>Bahir Dar</td>
+            <td>06:40</td>
+            <td>3,500</td>
+          </tr>
+          <tr>
+            <th scope="row">ET-126</th>
+            <td>Addis Ababa</td>
+            <td>Gondar</td>
+            <td>07:15</td>
+            <td>4,100</td>
+          </tr>
+          <tr>
+            <th scope="row">ET-130</th>
+            <td>Addis Ababa</td>
+            <td>Mekelle</td>
+            <td>09:00</td>
+            <td>4,500</td>
+          </tr>
+          <tr>
+            <th scope="row">ET-142</th>
+            <td>Addis Ababa</td>
+            <td>Dire Dawa</td>
+            <td>11:30</td>
+            <td>3,800</td>
+          </tr>
+          <tr>
+            <th scope="row">ET-160</th>
+            <td>Addis Ababa</td>
+            <td>Lalibela</td>
+            <td>13:45</td>
+            <td>4,200</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr>
+
+    <!-- EXERCISE 5: Color Systems & Hover Conversion -->
+    <section>
+      <h2>5. Color Systems (Hex, RGB, HSL) & Lightness Hover</h2>
+      <div class="palette-container">
+        <div class="color-swatch hex-1">Hex: #1B4D8E</div>
+        <div class="color-swatch hex-2">Hex: #D4A027</div>
+        <div class="color-swatch hex-3">Hex: #2E8B57</div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+/* CSS Variables & Tokens[cite: 6, 7] */
+:root {
+  --brand: #0A1F3D;
+  --gold: #D4A027;
+  --card-bg: #FFFFFF;
+  --space: 16px;
+  --text-color: #1A2433;
+  --zebra-bg: #F7FAFC;
+  --price-color: #2E8B57;
+}
+
+/* Global Reset & Typography[cite: 6, 7] */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: #F0F4F8;
+  padding: 40px 20px;
+}
+
+/* Menu Card Component[cite: 7] */
+.menu-card {
+  width: 320px;
+  margin: 0 auto;
+  padding: var(--space);
+  background-color: var(--card-bg);
+  border: 1px solid #E2E8F0;
+  border-top: 3px solid var(--gold);
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.menu-card:hover {
+  border-color: var(--gold);
+}
+
+.menu-card h3 {
+  color: var(--brand);
+  margin-top: 0;
+}
+
+.description {
+  font-size: 0.95rem;
+  color: #4A5568;
+}
+
+/* Pseudo-element for Currency Prefix[cite: 7] */
+.price {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--price-color);
+}
+
+.price::before {
+  content: "ETB ";
+  color: var(--price-color);
+  font-weight: 700;
+}
+
+/* Ingredient List with Zebra-Striping[cite: 7] */
+.ingredient-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+.ingredient-list li {
+  padding: 8px var(--space);
+  border-bottom: 1px solid #EDF2F7;
+}
+
+.ingredient-list li:nth-child(even) {
+  background-color: var(--zebra-bg);
+}

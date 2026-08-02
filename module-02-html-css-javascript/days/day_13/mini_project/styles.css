@@ -1,0 +1,115 @@
+/* Custom Properties & Tokens[cite: 6] */
+:root {
+  --brand-hue: 212;
+  --brand: hsl(var(--brand-hue), 68%, 33%);
+  --brand-hover: hsl(var(--brand-hue), 68%, 45%); /* HSL Lightness Hover[cite: 6] */
+  --accent-gold: #D4A027;
+  --text-dark: #1A202C;
+  --text-muted: #4A5568;
+  --card-bg: #FFFFFF;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --radius: 12px;
+}
+
+/* Global Reset & Typography[cite: 6] */
+*, *::before, *::after {
+  box-sizing: border-box; /* Global border-box reset[cite: 6] */
+}
+
+body {
+  font-family: "Inter", sans-serif; /* Web font from Google Fonts[cite: 6] */
+  line-height: 1.6; /* Generous line height[cite: 6] */
+  color: var(--text-dark);
+  background-color: #F7FAFC;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  margin: 0;
+}
+
+/* Profile Card Container[cite: 6] */
+.profile-card {
+  max-width: 380px;
+  width: 100%;
+  background-color: var(--card-bg);
+  border: 1px solid #E2E8F0;
+  border-top: 5px solid var(--accent-gold);
+  border-radius: var(--radius);
+  padding: var(--space-lg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Typographic Hierarchy[cite: 6] */
+.business-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--brand);
+  margin: 0 0 4px 0;
+}
+
+.tagline {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin: 0 0 var(--space-md) 0;
+}
+
+.description {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.info-section h2 {
+  font-size: 1.05rem;
+  margin: 0 0 var(--space-sm) 0;
+  color: var(--brand);
+}
+
+.info-section p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.telebirr-note {
+  font-weight: 600;
+  color: #2E8B57;
+  margin-top: 4px !important;
+}
+
+/* Pseudo-element Accent Marker[cite: 6] */
+.required-marker::before {
+  content: "☕ ";
+  font-size: 1.2rem;
+}
+
+/* Interactive Contact Button[cite: 6] */
+.contact-btn {
+  width: 100%;
+  margin-top: var(--space-lg);
+  padding: 12px var(--space-md);
+  background-color: var(--brand);
+  color: #FFFFFF;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Hover state changing ONLY HSL lightness[cite: 6] */
+.contact-btn:hover {
+  background-color: var(--brand-hover);
+}
+
+/* Intact Focus outline for accessibility[cite: 6] */
+.contact-btn:focus {
+  outline: 3px solid var(--accent-gold);
+  outline-offset: 2px;
+}

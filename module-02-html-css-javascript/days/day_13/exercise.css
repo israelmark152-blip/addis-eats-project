@@ -1,0 +1,129 @@
+/* Exercise 1: Root Variables[cite: 6] */
+:root {
+  --btn-bg: #1B4D8E;
+  --btn-text: #FFFFFF;
+  --btn-space: 12px 24px;
+  --main-font: "Inter", sans-serif;
+  --table-header-bg: #1B4D8E;
+  --zebra-bg: #F7FAFC;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--main-font);
+  line-height: 1.6;
+  margin: 0;
+  padding: 24px;
+  color: #2D3748;
+}
+
+/* Ex 1 Button */
+.custom-btn {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  padding: var(--btn-space);
+  font-family: var(--main-font);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.custom-btn:focus {
+  outline: 3px solid #D4A027;
+}
+
+/* Ex 2 Box Model Demonstration[cite: 6] */
+.box {
+  width: 300px;
+  padding: 24px;
+  border: 2px solid #1B4D8E;
+  background-color: #EBF8FF;
+}
+
+.content-box-demo {
+  box-sizing: content-box; /* Renders 352px wide[cite: 6] */
+}
+
+.border-box-demo {
+  box-sizing: border-box; /* Renders exactly 300px wide[cite: 6] */
+}
+
+/* Ex 3 Specificity Rules[cite: 6] */
+p { color: black; }          /* (0,0,0,1) */
+.note { color: blue; }       /* (0,0,1,0) */
+#lead { color: green; }      /* (0,1,0,0) - Wins![cite: 6] */
+
+/* Ex 4 Flight Schedule Table[cite: 6] */
+.flight-table {
+  width: 100%;
+  max-width: 650px;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.flight-table caption {
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.flight-table th, 
+.flight-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border: 1px solid #E2E8F0;
+}
+
+.flight-table thead th {
+  background-color: var(--table-header-bg);
+  color: #FFFFFF;
+}
+
+.flight-table tbody tr:nth-child(even) {
+  background-color: var(--zebra-bg);
+}
+
+/* Ex 5 Color Palette Swatches[cite: 6] */
+.palette-container {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.color-swatch {
+  width: 180px;
+  padding: 20px;
+  color: #FFFFFF;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+/* Color 1: #1B4D8E -> rgb(27, 77, 142) -> hsl(214, 68%, 33%)[cite: 6] */
+.hex-1 {
+  background-color: hsl(214, 68%, 33%);
+}
+.hex-1:hover {
+  background-color: hsl(214, 68%, 48%); /* Increased lightness on hover[cite: 6] */
+}
+
+/* Color 2: #D4A027 -> rgb(212, 160, 39) -> hsl(42, 69%, 49%)[cite: 6] */
+.hex-2 {
+  background-color: hsl(42, 69%, 49%);
+}
+.hex-2:hover {
+  background-color: hsl(42, 69%, 64%);
+}
+
+/* Color 3: #2E8B57 -> rgb(46, 139, 87) -> hsl(146, 50%, 36%)[cite: 6] */
+.hex-3 {
+  background-color: hsl(146, 50%, 36%);
+}
+.hex-3:hover {
+  background-color: hsl(146, 50%, 51%);
+}
