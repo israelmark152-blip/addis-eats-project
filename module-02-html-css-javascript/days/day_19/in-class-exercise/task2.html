@@ -1,0 +1,136 @@
+// ===== DATA =====
+let tasks = [
+    { id: 1, text: "Buy Teff", done: false },
+    { id: 2, text: "Buy Berbere", done: false },
+    { id: 3, text: "Buy Shiro", done: false }
+];
+let nextId = 4;
+
+// ===== DOM REFS =====
+const taskList = document.querySelector("#task-list");
+const counter = document.querySelector("#counter");
+
+// ===== COMPLETED FUNCTIONS =====
+
+// TASK 1: Render all tasks
+function render() {
+    // Clear the list
+    taskList.innerHTML = "";
+
+    // If no tasks, show empty state
+    if (tasks.length === 0) {
+        taskList.innerHTML = `<div class="empty-state">No tasks available</div>`;
+    } else {
+        // Loop through tasks and create elements
+        tasks.forEach(task => {
+            const itemDiv = document.createElement("div");
+            itemDiv.className = `item ${task.done ? "done" : ""}`;
+
+            // Add text content
+            const textSpan = document.createElement("span");
+            textSpan.textContent = task.text;
+
+            // Add toggle functionality when clicking the task text
+            textSpan.addEventListener("click", () => toggleTask(task.id));
+            textSpan.style.cursor = "pointer";
+
+            // Create delete button
+            const deleteBtn = document.createElement("button");
+            deleteBtn.className = "delete-btn";
+            deleteBtn.textContent = "Delete";
+            deleteBtn.addEventListener("click", (e) => {
+                e.stopPropagation(); // Prevents toggling when deleting
+                removeTask(task.id);
+            });
+
+            // Append elements
+            itemDiv.appendChild(textSpan);
+            itemDiv.appendChild(deleteBtn);
+            taskList.appendChild(itemDiv);
+        });
+    }
+
+    // Update counter
+    counter.textContent = `Total Tasks: ${tasks.length}`;
+}
+
+// TASK 2: Add a new task
+function addTask(text) {
+    // Create a new task object
+    const newTask = {
+        id: nextId++,
+        text: text,
+        done: false
+    };
+
+    // Add to tasks array
+    tasks.push(newTask);
+
+    // Re-render
+    render();
+}
+
+// TASK 3: Toggle a task's done status by id
+function toggleTask(id) {
+    // Find the task and toggle its done property
+    const task = tasks.find(t => t.id === id);
+    if (task) {
+        task.done = !task.done;
+    }
+
+    // Re-render
+    render();
+}
+
+// TASK 4: Remove a task by id
+function removeTask(id) {
+    // Filter the task out of the array
+    tasks = tasks.filter(t => t.id !== id);
+
+    // Re-render
+    render();
+}
+
+// TASK 5: Clear all tasks
+function clearAll() {
+    // Empty the tasks array
+    tasks = [];
+
+    // Re-render
+    render();
+}
+
+// ===== EVENT LISTENERS =====
+document.querySelector("#addBtn").addEventListener("click", function() {
+    const text = prompt("Enter task name:");
+    if (text && text.trim()) {
+        addTask(text.trim());
+    }
+});
+
+document.querySelector("#toggleBtn").addEventListener("click", function() {
+    if (tasks.length > 0) {
+        toggleTask(tasks[0].id);
+    } else {
+        alert("No tasks to toggle!");
+    }
+});
+
+document.querySelector("#removeBtn").addEventListener("click", function() {
+    if (tasks.length > 0) {
+        const lastTask = tasks[tasks.length - 1];
+        removeTask(lastTask.id);
+    } else {
+        alert("No tasks to remove!");
+    }
+});
+
+document.querySelector("#clearBtn").addEventListener("click", function() {
+    if (tasks.length > 0 && confirm("Delete all tasks?")) {
+        clearAll();
+    }
+});
+
+// ===== INITIAL RENDER =====
+render();
+console.log("📝 Task Manager ready!");
