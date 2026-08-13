@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Addis Market List</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>🛒 Addis Market List</h1>
+
+    <!-- Form to submit new market items -->
+    <form id="item-form">
+      <input 
+        type="text" 
+        id="item-input" 
+        placeholder="Enter item (e.g. Buna, Berbere, Shiro)..." 
+        required
+      />
+      <button type="submit" id="add-btn">Add Item</button>
+    </form>
+
+    <!-- Empty container where our JavaScript will inject items -->
+    <ul id="market-list"></ul>
+  </div>
+
+  <!-- Connect JavaScript at the very end of <body> -->
+  <script src="app.js"></script>
+</body>
+</html>
