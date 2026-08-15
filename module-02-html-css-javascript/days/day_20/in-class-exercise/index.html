@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 20 - In-Class Exercise</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Fetched Items List</h1>
+
+    <form id="search-form">
+      <input type="text" id="search-input" placeholder="Search items..." />
+      <button type="submit" id="search-btn">Search</button>
+    </form>
+
+    <button id="refresh-btn" type="button">Refresh Data</button>
+
+    <p id="loading" class="loading hidden">Loading...</p>
+    <p id="error-message" class="error hidden"></p>
+
+    <ul id="list"></ul>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

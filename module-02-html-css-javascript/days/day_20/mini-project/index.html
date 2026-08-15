@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 20 Mini-Project - Country Explorer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1>🌍 World Country Explorer</h1>
+      <p>Fetch and discover live country data asynchronously</p>
+    </header>
+
+    <section class="controls-section">
+      <form id="search-form" class="search-form">
+        <input 
+          type="text" 
+          id="search-input" 
+          placeholder="Search country (e.g., Ethiopia, Japan, Canada)..." 
+          autocomplete="off"
+        />
+        <button type="submit" id="search-btn">Search</button>
+        <button type="button" id="reset-btn" class="btn-secondary">Show All</button>
+      </form>
+    </section>
+
+    <!-- State Messages -->
+    <div id="status-container" class="status-container">
+      <div id="loading-spinner" class="spinner hidden"></div>
+      <p id="status-message" class="status-text hidden"></p>
+    </div>
+
+    <!-- Country Cards Grid -->
+    <main id="countries-grid" class="countries-grid"></main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
