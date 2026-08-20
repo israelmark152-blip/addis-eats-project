@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Addis Eats | Admin Dashboard</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <!-- Header Navigation & Logout -->
+  <header class="admin-header">
+    <div class="logo">
+      <h2>Addis<span>Eats</span> Admin</h2>
+    </div>
+    <div>
+      <a href="index.html" class="nav-btn">Customer View</a>
+      <button id="logout-btn" class="logout-btn">Logout</button>
+    </div>
+  </header>
+
+  <main class="admin-container">
+    
+    <!-- Dashboard Stats -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <h3>Total Dishes</h3>
+        <p id="stat-total-items">0</p>
+      </div>
+      <div class="stat-card">
+        <h3>Categories</h3>
+        <p id="stat-categories">0</p>
+      </div>
+      <div class="stat-card">
+        <h3>Total Orders</h3>
+        <p id="stat-orders">0</p>
+      </div>
+    </section>
+
+    <!-- Main Content Layout -->
+    <div class="dashboard-layout">
+      
+      <!-- Left Column: Add/Edit Item Form -->
+      <section class="form-section">
+        <h3 id="form-title">Add New Dish</h3>
+        <form id="dish-form" novalidate>
+          <input type="hidden" id="dish-id" />
+
+          <div class="form-group">
+            <label for="dish-name">Dish Name</label>
+            <input type="text" id="dish-name" placeholder="e.g., Asa Tibs" />
+            <span id="err-name" class="error-msg">Please enter a dish name.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="dish-category">Category</label>
+            <select id="dish-category">
+              <option value="ethiopian">Ethiopian</option>
+              <option value="burgers">Burgers</option>
+              <option value="pizza">Pizza</option>
+              <option value="drinks">Drinks</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="dish-price">Price (ETB)</label>
+            <input type="number" id="dish-price" placeholder="350" />
+            <span id="err-price" class="error-msg">Price must be greater than 0.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="dish-image">Image URL / Path</label>
+            <input type="text" id="dish-image" placeholder="images/asa-tibs.jpg" />
+            <span id="err-image" class="error-msg">Please enter an image path.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="dish-description">Description</label>
+            <textarea id="dish-description" rows="3" placeholder="Brief description..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="dish-ingredients">Ingredients (comma separated)</label>
+            <input type="text" id="dish-ingredients" placeholder="Fish, Lime, Garlic, Chili" />
+          </div>
+
+          <button type="submit" id="save-btn" class="primary-btn">Save Dish</button>
+          <button type="button" id="cancel-btn" class="secondary-btn hidden">Cancel Edit</button>
+        </form>
+      </section>
+
+      <!-- Right Column: Item Management & Orders Tables -->
+      <section class="tables-section">
+        
+        <h3>Menu Inventory</h3>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="inventory-tbody"></tbody>
+          </table>
+        </div>
+
+        <h3 class="section-title">Customer Orders</h3>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Items</th>
+                <th>Total</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="orders-tbody"></tbody>
+          </table>
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Custom Delete Confirmation Modal -->
+  <div id="delete-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <h3>Confirm Deletion</h3>
+      <p>Are you sure you want to delete this dish from the menu?</p>
+      <div class="modal-actions">
+        <button id="cancel-delete-btn" class="btn-secondary">Cancel</button>
+        <button id="confirm-delete-btn" class="btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

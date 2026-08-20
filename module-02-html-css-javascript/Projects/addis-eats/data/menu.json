@@ -1,0 +1,119 @@
+[
+  {
+    "id": 1,
+    "name": "Doro Wat",
+    "description": "Spicy Ethiopian chicken stew cooked with berbere, served with boiled eggs and injera.",
+    "price": 450,
+    "category": "ethiopian",
+    "image": "images/doro-wat.jpg",
+    "ingredients": ["Chicken", "Berbere", "Onions", "Injera", "Garlic", "Egg"]
+  },  
+  {
+    "id": 2,
+    "name": "Beef Tibs",
+    "description": "Sautéed beef cooked with onions, garlic, rosemary, and green chillies.",
+    "price": 400,
+    "category": "ethiopian",
+    "image": "images/tibs.jpg",
+    "ingredients": ["Beef", "Onions", "Garlic", "Rosemary", "Jalapeño", "Injera"]
+  },
+  {
+    "id": 3,
+    "name": "Special Beyaynetu",
+    "description": "A colorful vegetarian platter featuring various lentil and vegetable stews on injera.",
+    "price": 300,
+    "category": "ethiopian",
+    "image": "images/beyaynetu.jpg",
+    "ingredients": ["Lentils", "Cabbage", "Shiro", "Beets", "Injera", "Garlic"]
+  },
+  {
+    "id": 4,
+    "name": "Kitfo",
+    "description": "Minced lean beef seasoned with niter kibbeh (clarified butter) and mitmita.",
+    "price": 500,
+    "category": "ethiopian",
+    "image": "images/kitfo.jpg",
+    "ingredients": ["Minced Beef", "Niter Kibbeh", "Mitmita", "Ayib", "Gomen"]
+  },
+  {
+    "id": 5,
+    "name": "Classic Cheeseburger",
+    "description": "Juicy grilled beef patty with melted cheddar, lettuce, tomato, and special sauce.",
+    "price": 320,
+    "category": "burgers",
+    "image": "images/burger.jpg",
+    "ingredients": ["Beef Patty", "Cheddar Cheese", "Lettuce", "Tomato", "Bun"]
+  },
+  {
+    "id": 6,
+    "name": "Crispy Chicken Burger",
+    "description": "Golden fried chicken breast fillet with pickles and mayonnaise on a brioche bun.",
+    "price": 350,
+    "category": "burgers",
+    "image": "images/chicken-burger.jpg",
+    "ingredients": ["Fried Chicken", "Pickles", "Mayo", "Brioche Bun", "Lettuce"]
+  },
+  {
+    "id": 7,
+    "name": "Double Beef Burger",
+    "description": "Double beef patties loaded with double cheese, caramelized onions, and barbecue sauce.",
+    "price": 480,
+    "category": "burgers",
+    "image": "images/double-burger.jpg",
+    "ingredients": ["2x Beef Patties", "2x Cheese", "Onions", "BBQ Sauce", "Bun"]
+  },
+  {
+    "id": 8,
+    "name": "Margherita Pizza",
+    "description": "Classic Italian pizza loaded with tomato sauce, fresh mozzarella, and basil leaves.",
+    "price": 380,
+    "category": "pizza",
+    "image": "images/margherita.jpg",
+    "ingredients": ["Pizza Dough", "Tomato Sauce", "Mozzarella Cheese", "Fresh Basil"]
+  },
+  {
+    "id": 9,
+    "name": "Pepperoni Pizza",
+    "description": "Traditional pizza topped with tomato sauce, mozzarella cheese, and crispy beef pepperoni.",
+    "price": 450,
+    "category": "pizza",
+    "image": "images/pepperoni.jpg",
+    "ingredients": ["Pizza Dough", "Tomato Sauce", "Mozzarella", "Beef Pepperoni"]
+  },
+  {
+    "id": 10,
+    "name": "BBQ Chicken Pizza",
+    "description": "Wood-fired pizza topped with grilled chicken strips, red onions, and smoky BBQ sauce.",
+    "price": 470,
+    "category": "pizza",
+    "image": "images/bbq-pizza.jpg",
+    "ingredients": ["Pizza Dough", "Grilled Chicken", "BBQ Sauce", "Red Onions", "Mozzarella"]
+  },
+  {
+    "id": 11,
+    "name": "Fresh Avocado Juice",
+    "description": "Thick, fresh Ethiopian layered avocado smoothie served with lime juice.",
+    "price": 120,
+    "category": "drinks",
+    "image": "images/avocado-juice.jpg",
+    "ingredients": ["Fresh Avocado", "Lime Juice", "Sugar Syrup", "Ice"]
+  },
+  {
+    "id": 12,
+    "name": "Traditional Ethiopian Coffee",
+    "description": "Freshly brewed aromatic Ethiopian coffee served hot in a traditional finjal.",
+    "price": 80,
+    "category": "drinks",
+    "image": "images/ethiopian-coffee.jpg",
+    "ingredients": ["Roasted Coffee Beans", "Water", "Sugar"]
+  },
+  {
+    "id": 13,
+    "name": "Soft Drinks",
+    "description": "Chilled bottled soft drink options (Coca-Cola, Fanta, Sprite).",
+    "price": 60,
+    "category": "drinks",
+    "image": "images/soft-drink.jpg",
+    "ingredients": ["Carbonated Water", "Flavoring", "Sugar"]
+  }
+]

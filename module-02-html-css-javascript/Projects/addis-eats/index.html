@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Addis Eats | Authentic Taste Delivered</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- 1. Header Navigation & Admin Gateway -->
+  <header class="navbar">
+    <div class="logo">
+      <h1>Addis<span>Eats</span></h1>
+    </div>
+    <div class="nav-actions">
+      <!-- 12. Floating/Header Cart Counter -->
+      <button id="cart-btn" class="cart-trigger-btn">
+        🛒 Cart (<span id="cart-count">0</span>)
+      </button>
+      <!-- 2. Admin Link -->
+      <a href="admin-login.html" class="admin-link">Admin Portal</a>
+    </div>
+  </header>
+
+  <!-- 3. Hero Banner / Welcome Section -->
+  <section class="hero">
+    <h2>Welcome to Addis Eats</h2>
+    <p>Discover authentic Ethiopian flavors and local favorites made fresh daily.</p>
+  </section>
+
+  <!-- 4 & 5. Search Bar and Category Filters -->
+  <section class="controls-section">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Search dishes or ingredients..." />
+    </div>
+    <div class="filters-container">
+      <button class="filter-btn active" data-category="all">All</button>
+      <button class="filter-btn" data-category="ethiopian">Ethiopian</button>
+      <button class="filter-btn" data-category="burgers">Burgers</button>
+      <button class="filter-btn" data-category="pizza">Pizza</button>
+      <button class="filter-btn" data-category="drinks">Drinks</button>
+    </div>
+  </section>
+
+  <!-- 6. Main Grid Container -->
+  <main class="container">
+    <div id="menu-container" class="menu-grid"></div>
+  </main>
+
+  <!-- 13. Cart Modal Drawer -->
+  <div id="cart-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Your Order</h2>
+        <button id="close-cart" class="close-btn">&times;</button>
+      </div>
+      <div id="cart-items" class="modal-body"></div>
+      <div class="modal-footer">
+        <!-- 15. Total Price Calculation -->
+        <h3>Total: <span id="cart-total">0</span> ETB</h3>
+        <!-- 17. Simulated Checkout Button -->
+        <button id="checkout-btn" class="checkout-btn">Checkout Now</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
