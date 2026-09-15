@@ -1,0 +1,137 @@
+[{
+  "id": 1,
+  "name": "Special Tibs",
+  "description": "Tender beef sautéed with onion, tomato, rosemary and Ethiopian spices.",
+  "price": 450,
+  "category": "Ethiopian",
+  "image": "https://media-cdn.grubhub.com/image/upload/d_search%3Abrowse-images%3Adefault.jpg/w_1200%2Cq_auto%2Cfl_lossy%2Cdpr_auto%2Cc_fill%2Cf_auto%2Ch_800%2Cg_center/ppioos9bpweir3miyylh"
+},
+{
+  "id": 2,
+  "name": "Shiro Tegabino",
+  "description": "Traditional Ethiopian chickpea stew served with fresh injera.",
+  "price": 200,
+  "category": "Ethiopian",
+  "image": "https://d1w7312wesee68.cloudfront.net/4zCbBTb2qxl-frFJ80AuNQgJC42_hiZMp1xGqnmy744/resize%3Afit%3A720%3A720/plain/s3%3A/toasttab/restaurants/restaurant-278975000000000000/menu/items/4/item-1400000000713119844_1758326298.jpg"
+},
+{
+  "id": 3,
+  "name": "Doro Wot",
+  "description": "Classic Ethiopian spicy chicken stew with egg and berbere sauce.",
+  "price": 420,
+  "category": "Ethiopian",
+  "image": "https://ztecmdkhtsgzcpxirixk.supabase.co/storage/v1/object/public/entity-images/recipes/doro-wot.webp"
+},
+{
+  "id": 4,
+  "name": "Kitfo",
+  "description": "Seasoned minced beef served with traditional Ethiopian sides.",
+  "price": 500,
+  "category": "Ethiopian",
+  "image": "https://d1w7312wesee68.cloudfront.net/AxtN8x8OFHMfmLN36dbk37ocCf5Z_s-ndJiNDYTVSJ8/resize%3Afit%3A720%3A720/plain/s3%3A/toasttab/restaurants/restaurant-16932000000000000/menu/items/4/item-200000000524943744_1593297711.jpg"
+},
+{
+  "id": 5,
+  "name": "Firfir",
+  "description": "Pieces of injera mixed with berbere sauce, butter and fresh vegetables.",
+  "price": 220,
+  "category": "Ethiopian",
+  "image": "https://mesob.binaryabyssinia.com/images/recipes/quanta-firfir-icon.webp"
+},
+{
+    "id": 6,
+    "name": "Margherita Pizza",
+    "description": "Classic pizza with tomato sauce, mozzarella and fresh basil.",
+    "price": 380,
+    "category": "Pizza",
+    "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002"
+  },
+  {
+    "id": 7,
+    "name": "Chicken Pizza",
+    "description": "Pizza topped with grilled chicken, mozzarella, peppers and onions.",
+    "price": 450,
+    "category": "Pizza",
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"
+  },
+  {
+    "id": 8,
+    "name": "Beef Pizza",
+    "description": "Loaded pizza with seasoned beef, mozzarella, onions and peppers.",
+    "price": 480,
+    "category": "Pizza",
+    "image": "https://images.unsplash.com/photo-1579751626657-72bc17010498"
+  },
+  {
+    "id": 9,
+    "name": "Veggie Pizza",
+    "description": "Fresh vegetables, tomato sauce and mozzarella on a crispy crust.",
+    "price": 400,
+    "category": "Pizza",
+    "image": "https://images.unsplash.com/photo-1579751626657-72bc17010498"
+  },
+  {
+    "id": 10,
+    "name": "Pepperoni Pizza",
+    "description": "Classic pizza topped with pepperoni, tomato sauce and melted cheese.",
+    "price": 470,
+    "category": "Pizza",
+    "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e"
+  },
+  {
+    "id": 11,
+    "name": "Chicken Burger",
+    "description": "Crispy chicken, fresh lettuce, tomato and house sauce.",
+    "price": 280,
+    "category": "Burgers",
+    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd"
+  },
+  {
+    "id": 12,
+    "name": "Classic Beef Burger",
+    "description": "Juicy beef patty with lettuce, tomato, onion and special sauce.",
+    "price": 320,
+    "category": "Burgers",
+    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd"
+  },
+  {
+    "id": 13,
+    "name": "Cheese Burger",
+    "description": "Grilled beef patty with melted cheese, lettuce and house sauce.",
+    "price": 350,
+    "category": "Burgers",
+    "image": "https://images.unsplash.com/photo-1550547660-d9450f859349"
+  },
+  {
+    "id": 14,
+    "name": "Double Beef Burger",
+    "description": "Two juicy beef patties with cheese, lettuce, tomato and special sauce.",
+    "price": 450,
+    "category": "Burgers",
+    "image": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90"
+  },
+  {
+    "id": 15,
+    "name": "Mango Juice",
+    "description": "Fresh and refreshing mango juice.",
+    "price": 90,
+    "category": "Drinks",
+    "image": "https://images.unsplash.com/photo-1546173159-315724a31696"
+  },
+  {
+    "id": 16,
+    "name": "Papaya Juice",
+    "description": "Fresh papaya juice blended until smooth and refreshing.",
+    "price": 100,
+    "category": "Drinks",
+    "image": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4"
+  },
+  {
+    "id": 17,
+    "name": "Macchiato",
+    "description": "Smooth espresso combined with steamed milk.",
+    "price": 100,
+    "category": "Drinks",
+    "image": "https://images.unsplash.com/photo-1485808191679-5f86510681a2"
+  }
+]

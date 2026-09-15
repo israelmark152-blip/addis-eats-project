@@ -1,0 +1,260 @@
+/* ================================
+   ADDIS EATS - CHECKOUT PAGE
+================================ */
+
+.checkout-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 25px;
+}
+
+.checkout-heading {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.checkout-heading h1 {
+  font-size: 42px;
+  margin: 0 0 10px;
+}
+
+.checkout-heading p {
+  color: #666;
+  font-size: 17px;
+  margin: 0;
+}
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 30px;
+  align-items: start;
+}
+
+.checkout-form,
+.checkout-summary {
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.checkout-form h2,
+.checkout-summary h2 {
+  margin: 0 0 25px;
+  font-size: 24px;
+}
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #f59e0b;
+}
+
+.form-error {
+  color: #dc2626;
+  font-size: 14px;
+  margin: 7px 0 0;
+}
+
+.place-order-button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #f59e0b;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.place-order-button:hover {
+  background: #d97706;
+}
+
+.place-order-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.checkout-summary {
+  position: sticky;
+  top: 20px;
+}
+
+.checkout-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.checkout-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.checkout-item span {
+  color: #666;
+  font-size: 14px;
+}
+
+.checkout-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid #ddd;
+  font-size: 21px;
+}
+
+.checkout-total strong {
+  color: #087443;
+}
+
+.back-to-cart {
+  width: 100%;
+  margin-top: 20px;
+  padding: 11px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  color: #555;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.back-to-cart:hover {
+  border-color: #f59e0b;
+  color: #f59e0b;
+}
+
+.checkout-empty,
+.order-confirmation {
+  max-width: 650px;
+  margin: 50px auto;
+  padding: 45px 30px;
+  text-align: center;
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.checkout-empty p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.confirmation-icon {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: #087443;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.order-confirmation h1 {
+  margin-bottom: 12px;
+}
+
+.confirmation-message {
+  color: #666;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.confirmation-details {
+  margin: 30px 0;
+  padding: 20px;
+  background: #f8f8f8;
+  border-radius: 8px;
+}
+
+.confirmation-details div {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.confirmation-details div:last-child {
+  border-bottom: none;
+}
+
+.confirmation-details span {
+  color: #666;
+}
+
+.checkout-primary-button {
+  display: inline-block;
+  padding: 13px 25px;
+  border-radius: 8px;
+  background: #f59e0b;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.checkout-primary-button:hover {
+  background: #d97706;
+}
+
+@media (max-width: 800px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 500px) {
+  .checkout-page {
+    padding: 30px 15px;
+  }
+
+  .checkout-heading h1 {
+    font-size: 32px;
+  }
+
+  .checkout-form,
+  .checkout-summary {
+    padding: 20px;
+  }
+
+  .confirmation-details div {
+    flex-direction: column;
+    gap: 4px;
+  }
+}

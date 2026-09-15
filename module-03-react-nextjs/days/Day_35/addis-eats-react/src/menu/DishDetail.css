@@ -1,0 +1,264 @@
+/* ================================
+   ADDIS EATS - DISH DETAIL
+================================ */
+
+.dish-detail-page {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 25px;
+}
+
+/* ================================
+   BACK TO MENU
+================================ */
+
+.back-menu-link {
+  display: inline-block;
+  margin-bottom: 25px;
+  color: #555;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.back-menu-link:hover {
+  color: #f59e0b;
+}
+
+/* ================================
+   DETAIL CONTAINER
+================================ */
+
+.dish-detail {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  align-items: center;
+
+  width: 100%;
+
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+
+  padding: 25px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+/* ================================
+   IMAGE CONTAINER
+================================ */
+
+.dish-detail-image-container {
+  width: 300px;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* ================================
+   DISH IMAGE
+================================ */
+
+.dish-detail-image {
+  display: block;
+
+  width: 300px;
+  height: 220px;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+}
+
+/* ================================
+   DISH CONTENT
+================================ */
+
+.dish-detail-content {
+  padding: 15px;
+}
+
+.dish-detail-category {
+  display: inline-block;
+
+  padding: 7px 13px;
+
+  border-radius: 20px;
+
+  background: #f3f4f6;
+  color: #555;
+
+  font-size: 13px;
+  font-weight: bold;
+
+  margin-bottom: 15px;
+}
+
+.dish-detail-content h1 {
+  font-size: 38px;
+  margin: 0 0 18px;
+}
+
+.dish-detail-description {
+  color: #666;
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.dish-detail-price {
+  color: #087443;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+/* ================================
+   BUTTONS
+================================ */
+
+.dish-detail-add-button,
+.dish-detail-cart-button {
+  display: block;
+  width: 100%;
+  padding: 14px;
+
+  border-radius: 8px;
+
+  text-align: center;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.dish-detail-add-button {
+  border: none;
+  background: #f59e0b;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.dish-detail-add-button:hover {
+  background: #d97706;
+}
+
+.dish-detail-cart-button {
+  border: 1px solid #ddd;
+  background: white;
+  color: #555;
+  text-decoration: none;
+}
+
+.dish-detail-cart-button:hover {
+  border-color: #f59e0b;
+  color: #f59e0b;
+}
+
+/* ================================
+   ERROR
+================================ */
+
+.dish-detail-error {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 45px 25px;
+
+  text-align: center;
+
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+}
+
+.dish-detail-error p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.back-menu-button {
+  display: inline-block;
+
+  padding: 12px 22px;
+
+  border-radius: 8px;
+
+  background: #f59e0b;
+  color: white;
+
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.back-menu-button:hover {
+  background: #d97706;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 800px) {
+
+  .dish-detail {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .dish-detail-image-container {
+    width: 300px;
+    height: 220px;
+    margin: 0 auto;
+  }
+
+  .dish-detail-image {
+    width: 300px;
+    height: 220px;
+  }
+
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 500px) {
+
+  .dish-detail-page {
+    padding: 30px 15px;
+  }
+
+  .dish-detail {
+    padding: 15px;
+  }
+
+  .dish-detail-image-container {
+    width: 260px;
+    height: 190px;
+  }
+
+  .dish-detail-image {
+    width: 260px;
+    height: 190px;
+  }
+
+  .dish-detail-content {
+    padding: 10px;
+  }
+
+  .dish-detail-content h1 {
+    font-size: 30px;
+  }
+
+  .dish-detail-description {
+    font-size: 15px;
+  }
+
+  .dish-detail-price {
+    font-size: 24px;
+  }
+
+}

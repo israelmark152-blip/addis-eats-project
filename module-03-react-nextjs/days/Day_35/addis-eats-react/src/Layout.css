@@ -1,0 +1,171 @@
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.site-header {
+  background: white;
+  border-bottom: 1px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 18px 25px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #222;
+  text-decoration: none;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.logo:hover {
+  color: #f59e0b;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.main-nav a {
+  color: #444;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.main-nav a:hover {
+  color: #f59e0b;
+}
+
+/* =========================
+   CART
+========================= */
+
+.cart-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cart-badge {
+  min-width: 20px;
+  height: 20px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 5px;
+
+  background: #f59e0b;
+  color: white;
+
+  border-radius: 50%;
+
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* =========================
+   SIGN IN
+========================= */
+
+.sign-in-link {
+  background: #f59e0b;
+  color: white !important;
+  padding: 9px 17px;
+  border-radius: 7px;
+}
+
+.sign-in-link:hover {
+  background: #d97706;
+}
+
+/* =========================
+   SIGN OUT
+========================= */
+
+.sign-out-button {
+  border: 1px solid #ddd;
+  background: white;
+  color: #444;
+  padding: 9px 17px;
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sign-out-button:hover {
+  border-color: #f59e0b;
+  color: #f59e0b;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main-content {
+  flex: 1;
+  width: 100%;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer {
+  background: white;
+  border-top: 1px solid #e5e5e5;
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .header-container {
+    padding: 15px;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .main-nav {
+    gap: 10px;
+  }
+
+  .main-nav a,
+  .sign-out-button {
+    font-size: 13px;
+  }
+
+  .sign-in-link {
+    padding: 8px 12px;
+  }
+}
