@@ -1,0 +1,6 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, -apple-system, sans-serif; padding: 20px; line-height: 1.5; }
+form { max-width: 400px; display: flex; flex-direction: column; gap: 10px; }
+input, button { padding: 8px 12px; font-size: 1rem; }
+.error { color: red; font-size: 0.875rem; }
+.success { color: green; font-size: 0.875rem; }
