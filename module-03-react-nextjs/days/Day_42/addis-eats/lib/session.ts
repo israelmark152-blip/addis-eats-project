@@ -2,9 +2,9 @@ import { cookies } from 'next/headers';
 
 export async function setSession(userData: Record<string, any>) {
   const cookieStore = await cookies();
-  cookieStore.set('session', JAON.stringify(userData), {
+  cookieStore.set('session', JSON.stringify(userData), {
     httpOnly: true,
-    secure: process.env.NODE_ENv === 'production',
+    secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
     maxAge: 60 * 60 * 24 * 7,
     path: '/',

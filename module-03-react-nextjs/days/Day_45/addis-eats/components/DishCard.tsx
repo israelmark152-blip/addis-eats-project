@@ -1,42 +1,53 @@
 "use client";
 
 import Link from "next/link";
-import { Dish } from "@/lib/db";
-import { useCart } from "@/context/CartContext";
+import type { Dish } from "@/lib/db";
+import AddToCartButton from "@/components/AddToCartButton";
 
 export default function DishCard({ dish }: { dish: Dish }) {
-  const { addToCart } = useCart();
-
   return (
-    <div className="bg-white rounded-lg border shadow-sm overflow-hidden flex flex-col justify-between">
+    <article className="flex flex-col justify-between overflow-hidden rounded-xl border bg-white shadow-sm">
       <div>
-        <img
-          src={dish.image}
-          alt={dish.name}
-          className="w-full h-48 object-cover"
-        />
+        <Link href={`/menu/${encodeURIComponent(dish.id)}`}>
+          <img
+            src={dish.image}
+            alt={dish.name}
+            width={600}
+            height={400}
+            loading="lazy"
+            className="h-48 w-full bg-gray-100 object-cover"
+          />
+        </Link>
+
         <div className="p-4">
-          <div className="flex justify-between items-start mb-2">
-            <h3 className="font-bold text-lg text-gray-900">{dish.name}</h3>
-            <span className="text-emerald-700 font-bold">{dish.price} ETB</span>
+          <div className="mb-2 flex items-start justify-between gap-3">
+            <h2 className="text-lg font-bold text-gray-900">
+              <Link
+                href={`/menu/${encodeURIComponent(dish.id)}`}
+                className="hover:text-emerald-700"
+              >
+                {dish.name}
+              </Link>
+            </h2>
+
+            <span className="shrink-0 font-bold text-emerald-700">
+              {dish.price.toLocaleString("en-ET")} ETB
+            </span>
           </div>
-          <p className="text-gray-600 text-sm mb-4">{dish.description}</p>
+
+          <p className="mb-2 text-xs uppercase tracking-wide text-gray-500">
+            {dish.category}
+          </p>
+
+          <p className="mb-4 text-sm leading-6 text-gray-600">
+            {dish.description}
+          </p>
         </div>
       </div>
-      <div className="p-4 pt-0 flex gap-2">
-        <Link
-          href={`/menu/${dish.id}`}
-          className="flex-1 text-center bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium py-2 rounded-md transition-colors"
-        >
-          View Details
-        </Link>
-        <button
-          onClick={() => addToCart(dish)}
-          className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium py-2 rounded-md transition-colors"
-        >
-          Add to Cart
-        </button>
+
+      <div className="p-4 pt-0">
+        <AddToCartButton dish={dish} />
       </div>
-    </div>
+    </article>
   );
 }

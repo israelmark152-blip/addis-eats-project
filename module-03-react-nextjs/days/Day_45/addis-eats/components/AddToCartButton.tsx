@@ -1,17 +1,35 @@
 "use client";
 
+import { useState } from "react";
 import { useCart } from "@/context/CartContext";
-import { Dish } from "@/lib/db";
+import type { Dish } from "@/lib/db";
 
 export default function AddToCartButton({ dish }: { dish: Dish }) {
   const { addToCart } = useCart();
+  const [added, setAdded] = useState(false);
+
+  function handleAddToCart() {
+    addToCart({
+      id: dish.id,
+      name: dish.name,
+      price: dish.price,
+      category: dish.category,
+    });
+
+    setAdded(true);
+
+    window.setTimeout(() => {
+      setAdded(false);
+    }, 1200);
+  }
 
   return (
     <button
-      onClick={() => addToCart(dish)}
-      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-3 rounded-lg transition-colors shadow"
+      type="button"
+      onClick={handleAddToCart}
+      className="w-full rounded-lg bg-emerald-600 py-3 font-medium text-white shadow transition hover:bg-emerald-700"
     >
-      Add to Cart
+      {added ? "Added to Cart ✓" : "Add to Cart"}
     </button>
   );
 }

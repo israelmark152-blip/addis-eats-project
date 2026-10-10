@@ -25,7 +25,8 @@ async function showCountry(name) {
 
   try {
     // 2. Fetch with res.ok check
-    const response = await fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(query)}`);
+   // CORRECT for Day 20
+    const response = await fetch(`https://restcountries.com/v3.1/name/${name}`);
 
     if (!response.ok) {
       if (response.status === 404) {
